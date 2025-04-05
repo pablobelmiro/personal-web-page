@@ -4,10 +4,14 @@ import { createRouter, createWebHistory } from 'vue-router'
 // Importa os componentes
 import LoginPage from '@/views/Login.vue'
 import HomePage from '@/views/Home.vue'
+import NotFoundPage from '@/views/NotFound.vue'
 
 const routes = [
     { path: '/', name: 'Home', component: HomePage },
     { path: '/login', name: 'Login', component: LoginPage },
+
+    //Rota 404
+    { path: '/:pathMatch(.*)*', name: 'NotFound', component: NotFoundPage },
 ]
 
 const router = createRouter({

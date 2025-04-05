@@ -2,7 +2,10 @@
   <div class="min-h-screen bg-[#0c0c0c] text-white font-sans">
     <!-- Navbar -->
     <header class="flex items-center justify-between px-6 py-4 border-b border-gray-700 md:flex-row">
-      <h1 class="text-lg font-bold"><router-link to="/">Pablo Belmiro</router-link></h1>
+      <div class="flex">
+        <!--<img src="/favicon-32x32.png">-->
+        <h1 class="text-lg font-bold"><router-link to="/">Pablo Belmiro</router-link></h1>
+      </div>
       <nav class="hidden md:flex gap-6">
         <a href="#home" class="hover:text-gray-400">Home</a>
         <router-link :to="{ hash: '#about' }" class="hover:text-gray-400">About</router-link>
