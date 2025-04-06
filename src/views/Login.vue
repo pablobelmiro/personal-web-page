@@ -54,7 +54,7 @@
 </template>
 
 <script>
-import backgroundGif from '@/assets/backgrounds/login.gif';
+import backgroundGif from '@/assets/backgrounds/login2.gif';
 
 export default {
   name: "LoginPage",
