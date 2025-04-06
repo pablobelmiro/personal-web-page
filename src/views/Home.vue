@@ -55,7 +55,7 @@
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="flex flex-col items-center justify-center text-center mt-10">
+    <section id="home" class="fade-in-on-scroll opacity-0 translate-y-6 transition-all duration-700 ease-out flex flex-col items-center justify-center text-center mt-10">
       <!-- Avatar -->
       <img
           src="/avatar.png"
@@ -70,19 +70,26 @@
     </section>
 
     <!-- About -->
-    <section id="about" class="px-6 py-2 md:px-20">
-      <h3 class="text-2xl font-semibold mb-4">{{aboutText}}</h3>
-      <p class="text-gray-400 whitespace-pre-line" v-html="aboutMeText"></p>
-    </section>
+      <section id="about" class="fade-in-on-scroll opacity-0 translate-y-6 transition-all duration-700 ease-out px-6 py-2 md:px-20">
+        <h3 class="text-2xl font-semibold mb-4">{{aboutText}}</h3>
+        <p class="text-gray-400 whitespace-pre-line" v-html="aboutMeText"></p>
+      </section>
 
     <!-- Projects -->
-    <section id="projects" class="px-6 py-12 md:px-20">
+    <section id="projects" class="fade-in-on-scroll opacity-0 translate-y-6 transition-all duration-700 ease-out px-6 py-12 md:px-20">
       <h3 class="text-2xl font-semibold mb-4">{{projectsText}}</h3>
       <div>
-        <div class="flex">
-          <h3 class="text-2md font-semibold mb-4">Econopro(2017-today): </h3>
-          <p>Laravel, VueJS, Python, Mysql, Deploys(Laravel Forge, Vercel) - Full Stack</p>
+        <div class="flex flex-col md:flex-row">
+          <h3 class="text-2md font-semibold mb-2 md:mb-0 md:mr-2">
+            Econopro (2017–today):
+          </h3>
+          <p>
+            Laravel, VueJS, Python, MySQL, Deploys (Laravel Forge, Vercel) - Full Stack
+          </p>
         </div>
+
+        <br>
+
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-6">
           <img
               class="w-full h-40 sm:h-48 md:h-56 lg:h-64 border rounded-md cursor-pointer object-cover"
@@ -122,7 +129,7 @@
     </section>
 
     <!-- Certificates -->
-    <section id="certificates" class="px-6 py-12 md:px-20">
+    <section id="certificates" class="fade-in-on-scroll opacity-0 translate-y-6 transition-all duration-700 ease-out px-6 py-12 md:px-20">
       <h3 class="text-2xl font-semibold mb-4">{{certificatesText}}</h3>
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-6">
         <iframe
@@ -136,7 +143,7 @@
     </section>
 
     <!-- Contacts -->
-    <section id="contact" class="px-6 py-12 md:px-20">
+    <section id="contact" class="fade-in-on-scroll opacity-0 translate-y-6 transition-all duration-700 ease-out px-6 py-12 md:px-20">
       <h3 class="text-2xl font-semibold mb-4">{{contactText}}</h3>
       <div class="flex justify-center items-end space-x-6 mt-4 h-20">
         <!-- Gmail -->
@@ -204,7 +211,24 @@ export default {
       ]
     };
   },
+
   mounted() {
+    //General Scroll
+    const elements = document.querySelectorAll('.fade-in-on-scroll')
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('opacity-100', 'translate-y-0')
+          entry.target.classList.remove('opacity-0', 'translate-y-6')
+        }
+      })
+    }, {
+      threshold: 0.1
+    })
+
+    elements.forEach((el) => observer.observe(el))
+
     this.aboutMe()
     this.menuText()
 
